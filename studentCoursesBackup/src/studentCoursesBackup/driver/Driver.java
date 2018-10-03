@@ -2,6 +2,8 @@ package studentCoursesBackup.driver;
 
 import java.io.File;
 
+import studentCoursesBackup.util.FileProcessor;
+
 /**
  * @author Aaditya Sakharam Patil
  *
@@ -42,10 +44,7 @@ public class Driver {
 				System.exit(1);
 			}
 			
-			
-			
-			
-			
+			FileProcessor infile= new FileProcessor(args[0]);
 			
 			
 		}
