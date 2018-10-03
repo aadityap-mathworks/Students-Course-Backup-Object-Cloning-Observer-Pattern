@@ -3,6 +3,7 @@ package studentCoursesBackup.driver;
 import java.io.File;
 
 import studentCoursesBackup.util.FileProcessor;
+import studentCoursesBackup.util.TreeBuilder;
 
 /**
  * @author Aaditya Sakharam Patil
@@ -44,9 +45,11 @@ public class Driver {
 				System.exit(1);
 			}
 			
-			FileProcessor infile= new FileProcessor(args[0]);
+			//tree input
+			TreeBuilder t1= new TreeBuilder(args[0],1);
 			
-			
+			//delete nodes
+			TreeBuilder t2= new TreeBuilder(args[1],2);	
 		}
 		catch (Exception e) {
 			e.printStackTrace();

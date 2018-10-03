@@ -12,7 +12,6 @@ import java.util.ArrayList;
  */
 public class Results implements FileDisplayInterface, StdoutDisplayInterface {
 	
-
 public static ArrayList<String> finalList = new ArrayList<String>();
 	
 	/**
@@ -34,7 +33,7 @@ public static ArrayList<String> finalList = new ArrayList<String>();
 			 
 			out= new File(outFile);
 			fw = new FileWriter(out);
-			fw.write(finalList+"");
+			fw.write(finalList+"\n");
 		}
 		catch (Exception e){
 			e.printStackTrace();
@@ -60,7 +59,5 @@ public static ArrayList<String> finalList = new ArrayList<String>();
 	{
 		System.out.println(finalList);
 	}
-	
-	
 	
 }

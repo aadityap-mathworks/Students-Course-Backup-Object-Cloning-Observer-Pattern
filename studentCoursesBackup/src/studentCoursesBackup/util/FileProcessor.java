@@ -35,7 +35,7 @@ public class FileProcessor
 				String currentline;
 				while ((currentline = inputReader.readLine()) != null) 
 				{
-					System.out.println(currentline);
+					//System.out.println(currentline);
 					return currentline;
 				}
 			} catch (IOException ex)

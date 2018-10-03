@@ -32,15 +32,6 @@ Note: Arguments accept the absolute path of the files.
 
 -----------------------------------------------------------------------
 ## Description:
-Time Complexity is O(n^2)
-
-I have used ArrayList of type class Courses to store course details.
-Switch case is used to get course preferences in a loop and then 
-schedule them in class Allocation.
-Results are stored in Class Results with arrayList of type class
-Registration.
-
-Implemented methods interfaces in Results class. 
 
 -----------------------------------------------------------------------
 ### Academic Honesty statement:
@@ -52,6 +43,5 @@ I am involved in plagiarism or cheating an official form will be
 submitted to the Academic Honesty Committee of the Watson School to
 determine the action that needs to be taken. "
 
-Date: 09/21/2018
-
+Date: 
 
