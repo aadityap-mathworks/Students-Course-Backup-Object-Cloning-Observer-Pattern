@@ -1,6 +1,7 @@
 package studentCoursesBackup.util;
 
 import studentCoursesBackup.myTree.BST;
+import studentCoursesBackup.myTree.Node;
 
 /**
  * @author Aaditya Sakharam Patil
@@ -24,9 +25,22 @@ public class TreeBuilder {
 					while ((currentline = inFile.readLine()) != null) 
 					{
 						String part[] = currentline.split("[ ,:;-]+");
-						System.out.println(currentline);
+						int key =Integer.parseInt(part[0]);
+						String course = part[1];
+						Node temp=  treeOrig.search(key);	
+						if(temp==null)
+						{
+							Node nodeOrig= new Node(key);
+							treeOrig.insert(key, course);
+							
+						}
+						else
+						{
+							temp.setCourses(course);
+						}
 						
 					}
+					treeOrig.printNodes();
 				}
 				catch(Exception e)
 				{
@@ -44,7 +58,7 @@ public class TreeBuilder {
 					while ((currentline = delFile.readLine()) != null) 
 					{
 						
-						System.out.println(currentline);
+						//System.out.println(currentline);
 						
 					}
 				}

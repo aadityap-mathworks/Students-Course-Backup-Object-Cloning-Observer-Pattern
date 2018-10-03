@@ -1,5 +1,6 @@
 package studentCoursesBackup.myTree;
 
+
 public class BST {
 
     private Node root;
@@ -9,46 +10,65 @@ public class BST {
 	}
 	
 	
-    private Node search(Node node, int val)
+	 public Node search(int bNumIn)
+	 {
+			if(root==null){
+				return null;
+			}
+			Node temp= root;
+			int rval=temp.getbNumber();
+			while(temp!=null && rval!=bNumIn)
+			{
+				if (bNumIn < rval)
+					temp = temp.getLeft();
+				else if (bNumIn > rval)
+					temp = temp.getRight();
+				if(temp==null)
+				{
+					return null;
+				}
+			}
+			return temp;
+			
+	 }
+
+     public void insert(int data, String courseIn)
+     {
+         root = insert(root, data, courseIn);
+     }
+
+     /* Function to insert data recursively */
+
+     private Node insert(Node node, int data, String courseIn)
+     {
+         if (node == null)
+         {
+             node = new Node(data);
+         	 node.setCourses(courseIn);
+         }
+         else
+         {
+             if (data <= node.getbNumber())
+                 node.left = insert(node.left, data ,courseIn);
+             else
+                 node.right = insert(node.right, data , courseIn);
+         }
+         return node;
+     }
+
+
+    public void printNodes()
     {
-    	int rval = node.getbNumber();
-        while ((node != null)&& (rval!=val))
+        inorder(root);
+    }
+
+    private void inorder(Node r)
+    {
+        if (r != null)
         {
-        	rval = node.getbNumber();
-            if (val < rval)
-                node = node.getLeft();
-            else if (val > rval)
-                node = node.getRight();
-            else
-            {
-                return null;
-            }
-
+            inorder(r.getLeft());
+            System.out.println(r.getbNumber() +" : " +r.getAllCourses());
+            inorder(r.getRight());
         }
-        return node;
     }
-	
-    
-    public void insert(int data)
-    {
-        root = insert(root, data);
-    }
-
-    /* Function to insert data recursively */
-    private Node insert(Node node, int data)
-    {
-        if (node == null)
-            node = new Node(data);
-        else
-        {
-            if (data <= node.getbNumber())
-                node.left = insert(node.left, data);
-            else
-                node.right = insert(node.right, data);
-        }
-        return node;
-    }
-  
-    
-
 }
