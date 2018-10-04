@@ -27,6 +27,7 @@ public class Driver {
 			 */
 			if (args.length != 5 || args[0].equals("${arg0}") || args[1].equals("${arg1}") || args[2].equals("${arg2}") || args[3].equals("${arg3}") || args[4].equals("${arg4}" )) 
 			{
+				System.out.println(args.length);
 				System.err.println("Error: Incorrect number of arguments. Program accepts 5 argumnets.");
 				System.exit(0);
 			}
@@ -56,8 +57,8 @@ public class Driver {
 			//tree input
 			TreeBuilder t1= new TreeBuilder(inputFile,deleteFile);
 			BST tree1 = t1.tree("orig");
-			BST bTree1 =t1.tree("orig");
-			BST bTree2 =t1.tree("orig");
+			BST bTree1 =t1.tree("backup1");
+			BST bTree2 =t1.tree("backup2");
 			Results o1= new Results(output1);
 			Results o2= new Results(output2);
 			Results o3= new Results(output3);

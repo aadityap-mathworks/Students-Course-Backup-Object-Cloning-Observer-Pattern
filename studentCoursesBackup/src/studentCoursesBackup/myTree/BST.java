@@ -34,26 +34,32 @@ public class BST {
 			
 	 }
 
-     public void insert(int data, String courseIn)
+     public void insert(Node node, String courseIn, Node b1, Node b2)
      {
-         root = insert(root, data, courseIn);
+         root = insert(root, node, courseIn, b1,b2);
      }
 
      /* Function to insert data recursively */
 
-     private Node insert(Node node, int data, String courseIn)
+     private Node insert(Node node, Node cnode, String courseIn, Node b1, Node b2)
      {
          if (node == null)
          {
-             node = new Node(data);
+             node = new Node(cnode.getbNumber());
          	 node.setCourses(courseIn);
+         	 if(b1!=null&& b2!=null)
+         	 {
+         		 
+         		 node.register(b1);
+         		 node.register(b2);
+         	 }
          }
          else
          {
-             if (data <= node.getbNumber())
-                 node.left = insert(node.left, data ,courseIn);
+             if (cnode.getbNumber() <= node.getbNumber())
+                 node.left = insert(node.left, cnode, courseIn,b1,b2);
              else
-                 node.right = insert(node.right, data , courseIn);
+                 node.right = insert(node.right, cnode, courseIn,b1,b2);
          }
          return node;
      }

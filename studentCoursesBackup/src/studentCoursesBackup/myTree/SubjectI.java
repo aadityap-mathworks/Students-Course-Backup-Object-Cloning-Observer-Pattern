@@ -5,5 +5,7 @@ package studentCoursesBackup.myTree;
  *
  */
 public interface SubjectI {
-
+	void notifyAllObservers(String courseIn, op opIn);
+	void register(ObserverI obsIn);
+	void unregister(ObserverI obsIn);	
 }
