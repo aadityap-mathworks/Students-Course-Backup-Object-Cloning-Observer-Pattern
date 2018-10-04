@@ -1,10 +1,11 @@
 package studentCoursesBackup.myTree;
 
+import studentCoursesBackup.util.Results;
 
 public class BST {
 
     private Node root;
-    
+    Results res= new Results();
 	public BST() {
 		root=null;
 	}
@@ -19,6 +20,7 @@ public class BST {
 			int rval=temp.getbNumber();
 			while(temp!=null && rval!=bNumIn)
 			{
+				rval=temp.getbNumber();
 				if (bNumIn < rval)
 					temp = temp.getLeft();
 				else if (bNumIn > rval)
@@ -67,7 +69,7 @@ public class BST {
         if (r != null)
         {
             inorder(r.getLeft());
-            System.out.println(r.getbNumber() +" : " +r.getAllCourses());
+            res.finalResult(r.getbNumber() +" : " +r.getCourses()+"\n");
             inorder(r.getRight());
         }
     }

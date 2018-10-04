@@ -12,8 +12,27 @@ import java.util.ArrayList;
  */
 public class Results implements FileDisplayInterface, StdoutDisplayInterface {
 	
-public static ArrayList<String> finalList = new ArrayList<String>();
+	public static ArrayList<String> finalList = new ArrayList<String>();
+	String outputFile;
 	
+	public String getOutputFile() {
+		return outputFile;
+	}
+
+
+	public void setOutputFile(String outputFile) {
+		this.outputFile = outputFile;
+	}
+ 
+	public Results()
+	{
+		
+	}
+	public Results(String fileName)
+	{
+		setOutputFile(fileName);
+	}
+
 	/**
 	 * method to store results
 	 *
@@ -24,14 +43,14 @@ public static ArrayList<String> finalList = new ArrayList<String>();
 	}
 	
 	
-	public void writeToFile(String outFile) 
+	public void writeToFile() 
 	{
 		File out=null;
 		FileWriter fw = null;
 		
 		try {
 			 
-			out= new File(outFile);
+			out= new File(outputFile);
 			fw = new FileWriter(out);
 			fw.write(finalList+"\n");
 		}
@@ -55,9 +74,14 @@ public static ArrayList<String> finalList = new ArrayList<String>();
 	 * method to display results on StdOut
 	 *
 	 */
-	public void displayStdOut() 
+	public void displayStdOut(String s) 
 	{
-		System.out.println(finalList);
+		System.out.println(s+finalList);
+	}
+	
+	public void clearResult()
+	{
+		finalList.clear();
 	}
 	
 }

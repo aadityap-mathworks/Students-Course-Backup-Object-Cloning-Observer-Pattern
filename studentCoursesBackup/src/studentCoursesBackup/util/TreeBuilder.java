@@ -9,18 +9,16 @@ import studentCoursesBackup.myTree.Node;
  */
 public class TreeBuilder {
 
-	public TreeBuilder(String fileName, int operation)
+	BST treeOrig = new BST();
+	BST backup1= new BST();
+	BST backup2 = new BST();
+	public TreeBuilder(String inputFile, String deleteFile)
 	{
 		FileProcessor inFile = null;
 		FileProcessor delFile =null;
-		switch (operation)
-		{
-			case 1:
-				try {
-					BST treeOrig = new BST();
-					BST backup1= new BST();
-					BST backup2 = new BST();
-					inFile = new FileProcessor(fileName); 
+		try 
+				{
+					inFile = new FileProcessor(inputFile); 
 					String currentline;
 					while ((currentline = inFile.readLine()) != null) 
 					{
@@ -40,7 +38,25 @@ public class TreeBuilder {
 						}
 						
 					}
-					treeOrig.printNodes();
+					//treeOrig.printNodes();
+					
+					
+					delFile = new FileProcessor(deleteFile); 
+					String deleteline;
+					
+					while ((deleteline = delFile.readLine()) != null) 
+					{
+						String part[] = deleteline.split("[ ,:;-]+");
+						int key =Integer.parseInt(part[0]);
+						String course = part[1];
+						Node temp=  treeOrig.search(key);
+						if(temp!=null)
+						{
+							temp.delCourses(course);
+						}
+					}
+//					System.out.println("\n After Deletion:");
+//					treeOrig.printNodes();
 				}
 				catch(Exception e)
 				{
@@ -49,28 +65,28 @@ public class TreeBuilder {
 				}
 				finally {
 					inFile.close();
-				}
-			case 2:
-				try {
-					delFile = new FileProcessor(fileName); 
-					String currentline;
-					System.out.println("Delete File");
-					while ((currentline = delFile.readLine()) != null) 
-					{
-						
-						//System.out.println(currentline);
-						
-					}
-				}
-				catch(Exception e)
-				{
-					e.printStackTrace();
-				    System.exit(1);
-				}
-				finally {
 					delFile.close();
 				}
+	
+	}
+	
+	public BST tree(String type)
+	{
+		switch (type)
+		{
+		case "orig":
+			return treeOrig;
+			
+		case "backup1":
+			return backup1;
+			
+		case "backup2":
+			return backup2;
+			
+		default:
+			break;
 		}
+		return null;
 	}
 	
 	

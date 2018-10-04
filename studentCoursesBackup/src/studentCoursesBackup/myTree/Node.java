@@ -13,9 +13,7 @@ public class Node implements SubjectI, ObserverI, Cloneable{
 	Node left, right;
 	ArrayList<ObserverI> observers = new ArrayList<ObserverI>();
 	
-	public ArrayList<String> getAllCourses(){
-		return courses;
-	    }
+	
     public Node()
     {
         left = null;
@@ -46,6 +44,20 @@ public class Node implements SubjectI, ObserverI, Cloneable{
 		    courses.add(courseIn);
 	}
 	}
+	
+	public ArrayList<String> getCourses()
+	{
+		return courses;
+	}
+	
+	public void delCourses(String courseIn) {
+		if(courses.contains(courseIn)){
+		    courses.remove(courses.indexOf(courseIn));
+	}
+	}
+	
+	
+	
 	public Node getLeft() {
 		return left;
 	}

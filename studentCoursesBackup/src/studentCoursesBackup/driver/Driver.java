@@ -2,7 +2,9 @@ package studentCoursesBackup.driver;
 
 import java.io.File;
 
+import studentCoursesBackup.myTree.BST;
 import studentCoursesBackup.util.FileProcessor;
+import studentCoursesBackup.util.Results;
 import studentCoursesBackup.util.TreeBuilder;
 
 /**
@@ -45,11 +47,32 @@ public class Driver {
 				System.exit(1);
 			}
 			
-			//tree input
-			TreeBuilder t1= new TreeBuilder(args[0],1);
+			String inputFile=args[0];
+			String deleteFile = args[1];
+			String output1 = args[2];
+			String output2 = args[3];
+			String output3 = args[4];
 			
-			//delete nodes
-			TreeBuilder t2= new TreeBuilder(args[1],2);	
+			//tree input
+			TreeBuilder t1= new TreeBuilder(inputFile,deleteFile);
+			BST tree1 = t1.tree("orig");
+			BST bTree1 =t1.tree("orig");
+			BST bTree2 =t1.tree("orig");
+			Results o1= new Results(output1);
+			Results o2= new Results(output2);
+			Results o3= new Results(output3);
+			tree1.printNodes();
+			o1.displayStdOut("Original Tree: \n");
+			o1.writeToFile();
+			o1.clearResult();
+			bTree1.printNodes();
+			o2.displayStdOut("\nBackup Tree1: \n");
+			o2.writeToFile();
+			o2.clearResult();
+			bTree2.printNodes();
+			o3.displayStdOut("\nBackup Tree2: \n");
+			o3.writeToFile();
+			o3.clearResult();
 		}
 		catch (Exception e) {
 			e.printStackTrace();
