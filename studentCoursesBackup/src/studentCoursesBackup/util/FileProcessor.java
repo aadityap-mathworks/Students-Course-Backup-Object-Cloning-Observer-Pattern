@@ -14,6 +14,10 @@ public class FileProcessor
 {
 	private BufferedReader inputReader = null;
 	
+	/**
+	 *To process a file
+	 *@param filename
+	 */
 	public FileProcessor(String filename)
 	{
 		try {
@@ -28,15 +32,21 @@ public class FileProcessor
 		}
 	}
 	
-	
-	 public String readLine() 
+	/**
+	 *Reads line from input file
+	 */
+	 public String readInputLine() 
 	 {
 			try{
 				String currentline;
 				while ((currentline = inputReader.readLine()) != null) 
-				{
-					//System.out.println(currentline);
-					return currentline;
+				{	
+					if(currentline.equals(""))
+					{
+						return null;
+					}
+					else
+						return currentline;
 				}
 			} catch (IOException ex)
 	        {
@@ -51,7 +61,9 @@ public class FileProcessor
 			return null;
 		}
 	
-	 
+	 /**
+	 * to close buffered reader
+	 */
 	 public void close(){
 	    	try{
 		    inputReader.close();

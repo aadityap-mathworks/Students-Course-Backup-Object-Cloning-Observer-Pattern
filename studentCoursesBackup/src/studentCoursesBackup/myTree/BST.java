@@ -2,15 +2,36 @@ package studentCoursesBackup.myTree;
 
 import studentCoursesBackup.util.Results;
 
+/**
+ * @author Aaditya Sakharam Patil
+ * to create BST
+ * Also implements search and insert functionality
+ * prints nodes
+ * 
+ * references: 
+ * https://www.sanfoundry.com/java-program-implement-binary-search-tree/
+ * https://www.geeksforgeeks.org/
+ * 
+ */
+ 
+
 public class BST {
 
     private Node root;
+    
     Results res= new Results();
-	public BST() {
+	
+    public BST() {
 		root=null;
 	}
 	
-	
+
+	/**
+	 * searches for Node by traversing
+	 * @param bNumber
+	 * returns a Node if found else returns null
+	 *
+	 */
 	 public Node search(int bNumIn)
 	 {
 			if(root==null){
@@ -34,13 +55,21 @@ public class BST {
 			
 	 }
 
+
+	/**
+	 * To insert node and set the root
+	 *
+	 */
      public void insert(Node node, String courseIn, Node b1, Node b2)
      {
          root = insert(root, node, courseIn, b1,b2);
      }
 
-     /* Function to insert data recursively */
-
+     /** 
+      * Function to insert data recursively 
+      * @param node, backupNdes, course
+      * returns node
+      */
      private Node insert(Node node, Node cnode, String courseIn, Node b1, Node b2)
      {
          if (node == null)
@@ -49,7 +78,7 @@ public class BST {
          	 node.setCourses(courseIn);
          	 if(b1!=null&& b2!=null)
          	 {
-         		 
+         		 //setting observers
          		 node.register(b1);
          		 node.register(b2);
          	 }
@@ -65,11 +94,20 @@ public class BST {
      }
 
 
+	/**
+	 * to print nodes in order
+	 *
+	 */
     public void printNodes()
     {
         inorder(root);
     }
-
+    
+    /**
+	 * to print nodes
+	 * @param node
+	 * stores results
+	 */
     private void inorder(Node r)
     {
         if (r != null)
@@ -79,4 +117,36 @@ public class BST {
             inorder(r.getRight());
         }
     }
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((res == null) ? 0 : res.hashCode());
+		result = prime * result + ((root == null) ? 0 : root.hashCode());
+		return result;
+	}
+
+
+	/**
+	 * toString()
+	 */
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return super.toString();
+	}
+
+
+	/** 
+	 * finalize() method
+	 */
+	@Override
+	protected void finalize() throws Throwable {
+		// TODO Auto-generated method stub
+		super.finalize();
+	}
+
+
 }

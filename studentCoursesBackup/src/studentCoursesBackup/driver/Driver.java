@@ -3,7 +3,6 @@ package studentCoursesBackup.driver;
 import java.io.File;
 
 import studentCoursesBackup.myTree.BST;
-import studentCoursesBackup.util.FileProcessor;
 import studentCoursesBackup.util.Results;
 import studentCoursesBackup.util.TreeBuilder;
 
@@ -34,11 +33,18 @@ public class Driver {
 			
 			/**
 			 *argument validation
+			 *check if file exists
+			 *check if input and delete files are empty
 			 */
 			File file1 = new File(args[0]);
 			if (!file1.exists()) 
 			{
 				System.out.println("Input file does not exist.");
+				System.exit(1);
+			}
+			else if(file1.length() == 0)
+			{
+				System.out.println("input file is empty.");
 				System.exit(1);
 			}
 			File file2 = new File(args[1]);
@@ -47,18 +53,59 @@ public class Driver {
 				System.out.println("delete file does not exist.");
 				System.exit(1);
 			}
+			else if(file2.length() == 0)
+			{
+				System.out.println("delete file is empty.");
+				System.exit(1);
+			}
 			
+			File file3 = new File(args[2]);
+			if (!file3.exists()) 
+			{
+				System.out.println("output file does not exist.");
+				System.exit(1);
+			}
+			File file4 = new File(args[3]);
+			if (!file4.exists()) 
+			{
+				System.out.println("output file does not exist.");
+				System.exit(1);
+			}
+			File file5 = new File(args[4]);
+			if (!file5.exists()) 
+			{
+				System.out.println("output file does not exist.");
+				System.exit(1);
+			}
+			
+			/**
+			 *Storing command line arguments
+			 */
 			String inputFile=args[0];
 			String deleteFile = args[1];
 			String output1 = args[2];
 			String output2 = args[3];
 			String output3 = args[4];
 			
-			//tree input
+			/**
+			 *Building tree
+			 *@param input and delete files
+			 *return tree
+			 */
 			TreeBuilder t1= new TreeBuilder(inputFile,deleteFile);
+			
+			/**
+			 *Fetching BST for different types
+			 */
 			BST tree1 = t1.tree("orig");
 			BST bTree1 =t1.tree("backup1");
 			BST bTree2 =t1.tree("backup2");
+			
+			/**
+			 *Calling results
+			 *@param output file path
+			 *prints tree on STDOut and in respective file
+			 */
 			Results o1= new Results(output1);
 			Results o2= new Results(output2);
 			Results o3= new Results(output3);
@@ -74,6 +121,7 @@ public class Driver {
 			o3.displayStdOut("\nBackup Tree2: \n");
 			o3.writeToFile();
 			o3.clearResult();
+			
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -87,6 +135,7 @@ public class Driver {
 
 	@Override
 	public String toString() {
-		return "Driver [toString()=" + super.toString() + "]";
+		return "Driver [getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+				+ "]";
 	}
 }

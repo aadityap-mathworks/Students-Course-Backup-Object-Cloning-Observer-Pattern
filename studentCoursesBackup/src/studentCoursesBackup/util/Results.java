@@ -15,19 +15,37 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
 	public static ArrayList<String> finalList = new ArrayList<String>();
 	String outputFile;
 	
+	/**
+	 * to get output file name
+	 *@param filename
+	 */
 	public String getOutputFile() {
 		return outputFile;
 	}
 
-
+	
+	/**
+	 * sets output file name
+	 *@param filename
+	 */
 	public void setOutputFile(String outputFile) {
 		this.outputFile = outputFile;
 	}
  
+	/**
+	 * Constructor
+	 *
+	 */
 	public Results()
 	{
 		
 	}
+	
+	/**
+	 * Constructor
+	 * sets output file name
+	 *@param filename
+	 */
 	public Results(String fileName)
 	{
 		setOutputFile(fileName);
@@ -42,7 +60,10 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
 		finalList.add(res);
 	}
 	
-	
+	/**
+	 * method to write results to a file
+	 *
+	 */
 	public void writeToFile() 
 	{
 		File out=null;
@@ -79,9 +100,34 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
 		System.out.println(s+finalList);
 	}
 	
+	/**
+	 * method to clear results
+	 *
+	 */
 	public void clearResult()
 	{
 		finalList.clear();
+	}
+
+	
+	/**
+	 * hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((outputFile == null) ? 0 : outputFile.hashCode());
+		return result;
+	}
+	
+	/**
+	 * toString() method
+	 */
+	@Override
+	public String toString() {
+		return "Results [outputFile=" + outputFile + ", getOutputFile()=" + getOutputFile() + ", getClass()="
+				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
 	
 }
